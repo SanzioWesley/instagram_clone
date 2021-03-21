@@ -4,11 +4,16 @@ var express = require('express'),
 
 var app = express();
 
-//body-parser
+// body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
 
 var port = 8080;
+
 app.listen(port);
 
-console.log('Servidor HTTP está escutando na porta ' + port);
+console.log('Servidor HTTP esta escutando na porta ' + port);
+
+app.get('/', function(req, res) {
+    res.send({ msg: 'Hello Word' });
+});
