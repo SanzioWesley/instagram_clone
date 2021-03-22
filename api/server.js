@@ -5,6 +5,7 @@ var express = require('express'),
 
 var app = express();
 
+
 // body-parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
@@ -24,6 +25,7 @@ app.get('/', function(req, res) {
     res.send({ msg: 'Hello Word' });
 });
 
+
 // POST(create)
 app.post('/api', function(req, res) {
     var dados = req.body;
@@ -41,6 +43,7 @@ app.post('/api', function(req, res) {
     });
 });
 
+
 // GET(ready)
 app.get('/api', function(req, res) {
     db.open(function(err, mongoclient) {
@@ -57,6 +60,7 @@ app.get('/api', function(req, res) {
     });
 });
 
+
 // GET by ID(ready)
 app.get('/api/:id', function(req, res) {
     db.open(function(err, mongoclient) {
@@ -65,13 +69,14 @@ app.get('/api/:id', function(req, res) {
                 if (err) {
                     res.json(err);
                 } else {
-                    res.json(results);
+                    res.status(200).json(results);
                 }
                 mongoclient.close();
             });
         });
     });
 });
+
 
 // PUT by ID(update)
 app.put('/api/:id', function(req, res) {
@@ -90,6 +95,7 @@ app.put('/api/:id', function(req, res) {
         });
     });
 });
+
 
 // DELETE by ID(delete)
 app.delete('/api/:id', function(req, res) {
