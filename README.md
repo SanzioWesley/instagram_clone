@@ -2,14 +2,14 @@
 
 # Sobre o projeto
 
-No clone do instagram os layout de login e home já vem pronto, o objetivo é fazer a pagina login enviar pra pagina home, o RestFull da Api e mostrar no pagina home.
+No clone do instagram os layout de login e home já vem pronto, o objetivo é fazer o RESTful da Api e mostrar no pagina home.
 
 
 
 ## Layout web
 ![Modelo Web](https://github.com/SanzioWesley/instagram_clone/blob/main/cliente_web/app/public/images/login.png)
 
-## Api RestFull
+## Api RESTful
 ![Modelo Web](https://github.com/SanzioWesley/instagram_clone/blob/main/cliente_web/app/public/images/restFull.PNG)
 
 
