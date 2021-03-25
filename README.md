@@ -9,7 +9,7 @@ No clone do instagram os layout de login e home já vem pronto, o objetivo é fa
 ## Layout web
 ![Modelo Web](https://github.com/SanzioWesley/instagram_clone/blob/main/cliente_web/app/public/images/login.png)
 
-## Api RESTful
+## RESTful APIs
 ![Modelo Web](https://github.com/SanzioWesley/instagram_clone/blob/main/cliente_web/app/public/images/restFull.PNG)
 
 
