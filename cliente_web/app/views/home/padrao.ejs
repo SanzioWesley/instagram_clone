@@ -17,17 +17,13 @@
 
     <script>
         $(document).ready(function() {
-
             function carrega_postagens() {
-
                 // criar xmlhttprequest
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "http://localhost:8080/api");
-
                 xhr.onload = function() {
                     if (xhr.status === 200) {
                         var data = $.parseJSON(xhr.responseText);
-
                         for (i = 0; i < data.length; i++) {
                             $('#container_timeline').append(
                                 '<div class="publicacao">' +
@@ -42,35 +38,31 @@
                                 '</div>'
                             );
                         }
-
                         $('.btn_postagem').click(function() {
                             var id = this.value;
                             var id_input_comentario = 'postagem_' + id;
                             var comentario = $('#' + id_input_comentario).val();
-
                             var xhr = new XMLHttpRequest();
+
                             xhr.open('PUT', 'http://localhost:8080/api/' + id);
                             xhr.setRequestHeader('Content-Type', 'application/json');
 
                             xhr.onload = function() {
-                                alert(xhr.responseText);
+                                if (xhr.status === 200) {
+                                    window.location.href = '/home';
+                                }
                             };
 
                             xhr.send(JSON.stringify({
                                 comentario: comentario
                             }));
-
                         });
-
                     }
                 }
-
                 xhr.send();
-
             }
 
             carrega_postagens();
-
             $('#btn_incluir').click(function() {
                 $('#container_timeline').hide();
                 $('#container_form').show();
@@ -83,10 +75,8 @@
             });
 
             $('#btn-publicar').click(function() {
-
                 // criar um formData
                 var formData = new FormData();
-
                 var arquivo = document.getElementById('arquivo').files[0];
                 var titulo = document.getElementById('titulo').value;
 
@@ -107,9 +97,7 @@
                 // fazer envio do nosso request
                 xhr.open("POST", "http://localhost:8080/api");
                 xhr.send(formData);
-
             });
-
         });
     </script>
 

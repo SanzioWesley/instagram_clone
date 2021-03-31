@@ -135,24 +135,30 @@ app.get('/uploads/:imagem', function(req, res) {
 
 // PUT by ID(update)
 app.put('/api/:id', function(req, res) {
-    res.send(req.body.comentario);
-    /*
+    //res.send(req.body.comentario);
+
     db.open(function(err, mongoclient) {
         mongoclient.collection('postagens', function(err, collection) {
-            collection.update({ _id: objectId(req.params.id) }, { $set: { titulo: req.body.titulo } }, {},
+            collection.update({ _id: objectId(req.params.id) }, {
+                    $push: {
+                        comentarios: {
+                            id_comentario: new objectId(),
+                            comentario: req.body.comentario
+                        }
+                    }
+                }, {},
                 function(err, records) {
                     if (err) {
                         res.json(err);
                     } else {
                         res.json(records);
                     }
-
                     mongoclient.close();
                 }
             );
         });
     });
-    */
+
 });
 
 
