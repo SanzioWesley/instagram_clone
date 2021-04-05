@@ -19,7 +19,6 @@
         $(document).ready(function() {
 
             function carrega_postagens() {
-
                 // criar xmlhttprequest
                 var xhr = new XMLHttpRequest();
                 xhr.open("GET", "http://localhost:8080/api");
@@ -29,6 +28,7 @@
                         var data = $.parseJSON(xhr.responseText);
 
                         for (i = 0; i < data.length; i++) {
+
                             $('#container_timeline').append(
                                 '<div class="publicacao">' +
                                 '<span class="titulo">' +
@@ -37,8 +37,8 @@
                                 '<img src="http://localhost:8080/imagens/' + data[i].url_imagem + '" />' +
                                 '<div class="comentarios" id="comentarios_' + data[i]._id + '"></div>' +
                                 '<div class="comentar">' +
-                                '<input type="text" class="form-control input_comentario" id="postagem_' + data[i]._id + '" placeholder="Adicione um Comentário...">' +
-                                '<button class="btn btn-default btn_postagem" value="' + data[i]._id + '" type="button">Comentar</button>' +
+                                '<input type="text" class="form-control input_comentario" id="postagem_' + data[i]._id + '" placeholder="Adicione um comentário...">' +
+                                '<button class="btn btn-default btn_postagem" value="' + data[i]._id + '" type="button">Comentar</button> ' +
                                 '</div>' +
                                 '</div>'
                             );
@@ -58,7 +58,7 @@
 
                         }
 
-                        $(".btn_remover_postagem").click(function() {
+                        $('.btn_remover_postagem').click(function() {
                             var id_comentario = this.value;
 
                             var xhr = new XMLHttpRequest();
@@ -66,9 +66,9 @@
 
                             xhr.onload = function() {
                                 if (xhr.status === 200) {
-                                    alert(xhr.responseText);
+                                    window.location.href = '/home';
                                 }
-                            };
+                            }
 
                             xhr.send();
 
@@ -87,19 +87,17 @@
                                 if (xhr.status === 200) {
                                     window.location.href = '/home';
                                 }
-                            };
+                            }
 
                             xhr.send(JSON.stringify({
                                 comentario: comentario
                             }));
 
                         });
-
                     }
                 }
 
                 xhr.send();
-
             }
 
             carrega_postagens();
@@ -120,8 +118,8 @@
                 // criar um formData
                 var formData = new FormData();
 
-                var arquivo = document.getElementById('arquivo').files[0];
-                var titulo = document.getElementById('titulo').value;
+                var arquivo = document.getElementById("arquivo").files[0];
+                var titulo = document.getElementById("titulo").value;
 
                 formData.append("arquivo", arquivo);
                 formData.append("titulo", titulo);
@@ -137,10 +135,9 @@
                     }
                 }
 
-                // fazer envio do nosso request
+                //fazer o envio do nosso request
                 xhr.open("POST", "http://localhost:8080/api");
                 xhr.send(formData);
-
             });
 
         });
